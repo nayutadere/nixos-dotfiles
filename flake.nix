@@ -30,6 +30,8 @@
 						useUserPackages = true;
 						users.nayuta = import ./home.nix;
 						backupFileExtension = "backup";
+
+            extraSpecialArgs = {inherit inputs;};
 					};
 				}
 			];
