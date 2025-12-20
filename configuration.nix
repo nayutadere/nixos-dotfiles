@@ -23,7 +23,13 @@
     };
     firewall = {
       allowedUDPPorts = [ 9 ];
+      allowedTCPPorts = [ 8384 ];
     };
+  };
+
+  services.syncthing = {
+  enable = true;
+  openDefaultPorts = true;
   };
 
   fileSystems."/mnt/games" = {
