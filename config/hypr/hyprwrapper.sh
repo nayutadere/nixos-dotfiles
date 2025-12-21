@@ -1,4 +1,4 @@
-BASE_DIR="$HOME/kani/Important/Screenshots"
+BASE_DIR="$HOME/kani/Screenshots"
 
 MONTH_FOLDER=$(date +%Y-%m)
 

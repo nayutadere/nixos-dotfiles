@@ -6,7 +6,7 @@ let
     hypr = "hypr";
     nvim = "nvim";
     waybar = "waybar";
-    alacritty = "alacritty";
+    foot = "foot";
   };
 in
 
@@ -30,6 +30,22 @@ in
   };
 
   services.dunst.enable = true;
+
+  services.mpd = {
+    enable = true;
+    musicDirectory = "~/kani/Music";
+    # Optional:
+    network.listenAddress = "any"; # if you want to allow non-localhost connections
+    network.startWhenNeeded = true; # systemd feature: only start MPD service upon connection to its socket
+    
+    extraConfig = ''
+      audio_output {
+      type "pipewire"
+      name "music output"
+      mixer_type "software"
+      }
+    '';
+    };
 
   xdg.configFile = builtins.mapAttrs (name: subpath: {
     source = create_symlink "${dotfiles}/${subpath}";
@@ -56,6 +72,7 @@ in
     pavucontrol
     qpwgraph
     btop
+    rmpc
     ani-cli
     mpv
     inputs.nix-citizen.packages.${system}.rsi-launcher

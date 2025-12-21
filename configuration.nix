@@ -28,6 +28,8 @@
   };
 
   services.syncthing = {
+  dataDir = "/home/nayuta/";
+  user = "nayuta";
   enable = true;
   openDefaultPorts = true;
   };
@@ -73,6 +75,7 @@
   programs.thunar.enable = true;
   services.gvfs.enable = true;
   services.tumbler.enable = true;
+  programs.yazi.enable = true;
 
   services.sunshine = {
     enable = true;
@@ -86,12 +89,13 @@
     vim
     wget
     git
-    alacritty
+    foot
     waybar
     hyprpaper
     hyprshot
 ];
 
+  fonts.fontconfig.enable = true;
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
