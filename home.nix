@@ -24,9 +24,9 @@ in
     };
     profileExtra = ''
       if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-          exec uwsm start -S hyprland-uwsm.desktop
+        exec uwsm start -S hyprland-uwsm.desktop
       fi
-	  '';
+    '';
   };
 
   services.dunst.enable = true;
@@ -55,7 +55,8 @@ in
 
 	home.packages = with pkgs; [
     neovim
-	  ripgrep
+    neofetch
+    ripgrep
 	  nil
 	  nixpkgs-fmt
     nodejs
@@ -76,5 +77,6 @@ in
     ani-cli
     mpv
     inputs.nix-citizen.packages.${system}.rsi-launcher
+    qalculate-qt
   ];
 }

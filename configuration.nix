@@ -12,12 +12,14 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  services.getty.autologinUser = "nayuta";
+
   #networking.hostName = "nixos-flandre"; # Define your hostname.
   networking = {
     hostName = "nixos-flandre";
 
     interfaces = {
-      ens3 = {
+      enp11s0 = {
         wakeOnLan.enable = true;
       };
     };
