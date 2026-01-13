@@ -12,19 +12,28 @@
     nix-citizen = {
       url = "github:LovingMelody/nix-citizen";
       inputs.nix-gaming.follows = "nix-gaming";
-
     };
-	};
+    
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+  };
 
-	outputs = { self, nixpkgs, home-manager, ...}@inputs: {
+	outputs = { self, nixpkgs, home-manager, aagl, ...}@inputs: {
 		nixosConfigurations.flandre = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			
       specialArgs = {inherit inputs;};
+
       modules = [
-				./configuration.nix
-				home-manager.nixosModules.home-manager
-				{
+        aagl.nixosModules.default
+        ./configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          programs.sleepy-launcher.enable = true;
+
 					home-manager = {
 						useGlobalPkgs = true;
 						useUserPackages = true;
@@ -32,7 +41,7 @@
 						backupFileExtension = "backup";
 
             extraSpecialArgs = {inherit inputs;};
-					};
+				  };
 				}
 			];
 		};

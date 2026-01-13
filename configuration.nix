@@ -6,6 +6,12 @@
       ./hardware-configuration.nix
     ];
 
+  nix.settings = {
+        substituters = ["https://nix-citizen.cachix.org" "https://ezkea.cachix.org"];
+        trusted-public-keys = ["nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo=" "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
+        
+    };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -14,9 +20,17 @@
 
   services.getty.autologinUser = "nayuta";
 
+  services.resolved = {
+    enable = true;
+    dnssec = "true";
+    dnsovertls = "opportunistic";
+  };
+
   #networking.hostName = "nixos-flandre"; # Define your hostname.
   networking = {
     hostName = "nixos-flandre";
+    
+    nameservers = [ "9.9.9.9" "149.112.112.112"];
 
     interfaces = {
       enp11s0 = {
@@ -40,11 +54,6 @@
     device = "dev/disk/by-uuid/9f50cec9-83f1-48b2-b03b-d42a21f53cdc";
     fsType = "ext4";
   };
-
-  #services.xserver.enable = true; # optional
-  #services.displayManager.sddm.enable = true;
-  #services.displayManager.sddm.wayland.enable = true;
-  #services.desktopManager.plasma6.enable = true;
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
@@ -75,8 +84,13 @@
 
   programs.steam.enable = true;
   programs.thunar.enable = true;
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
+  services.gvfs.enable = true; 
+  programs.xfconf.enable = true;
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-volman
+  ];
+
   programs.yazi.enable = true;
 
   services.sunshine = {
@@ -86,6 +100,9 @@
     openFirewall = true;
     
   };
+
+  programs.neovim.enable = true;
+  programs.neovim.defaultEditor = true;
 
   environment.systemPackages = with pkgs; [
     vim
@@ -100,6 +117,17 @@
   fonts.fontconfig.enable = true;
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    nerd-fonts.mononoki
+    dejavu_fonts
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

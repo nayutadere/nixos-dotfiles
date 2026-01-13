@@ -10,7 +10,6 @@ let
   };
 in
 
-
 {
 	home.username = "nayuta";
 	home.homeDirectory = "/home/nayuta";
@@ -78,5 +77,14 @@ in
     mpv
     inputs.nix-citizen.packages.${system}.rsi-launcher
     qalculate-qt
+    obs-studio
+    tickrs
+    thunderbird
+    wine
+    winetricks
+    yt-dlp
+    jdk
+    unzip
+    alarm-clock-applet
   ];
 }
