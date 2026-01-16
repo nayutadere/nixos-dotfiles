@@ -86,5 +86,6 @@ in
     jdk
     unzip
     alarm-clock-applet
+    gale
   ];
 }

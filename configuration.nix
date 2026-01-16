@@ -43,12 +43,12 @@
     };
   };
 
-  services.syncthing = {
-  dataDir = "/home/nayuta/";
-  user = "nayuta";
-  enable = true;
-  openDefaultPorts = true;
-  };
+ # services.syncthing = {
+ # dataDir = "/home/nayuta";
+ # user = "nayuta";
+ # enable = true;
+ # openDefaultPorts = true;
+ # };
 
   fileSystems."/mnt/games" = {
     device = "dev/disk/by-uuid/9f50cec9-83f1-48b2-b03b-d42a21f53cdc";
