@@ -18,7 +18,6 @@ in
 	programs.bash = {
 		enable = true;
 		shellAliases = {
-			btw = "echo I use nixos, btw";
 		  editos = "nvim ~/nixos-dotfiles/";
     };
     profileExtra = ''
@@ -85,7 +84,7 @@ in
     yt-dlp
     jdk
     unzip
-    alarm-clock-applet
     gale
+    vscodium
   ];
 }
