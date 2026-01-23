@@ -9,6 +9,7 @@
     ../../modules/nixos/common
     ../../modules/nixos/networking
     ../../modules/nixos/hyprland
+    ../../modules/nixos/fonts
   ];
 
   # Host-specific settings

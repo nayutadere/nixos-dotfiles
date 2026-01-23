@@ -29,7 +29,7 @@
 
       modules = [
         aagl.nixosModules.default
-        ./hosts/hitori  # Host-specific config (imports shared configuration.nix)
+        ./hosts/hitori 
         home-manager.nixosModules.home-manager
         {
           programs.sleepy-launcher.enable = true;

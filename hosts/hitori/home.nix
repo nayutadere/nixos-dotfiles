@@ -20,11 +20,11 @@ in
 		shellAliases = {
 		  editos = "nvim ~/nixos-dotfiles/";
     };
-    profileExtra = ''
-      if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        exec uwsm start -S hyprland-uwsm.desktop
-      fi
-    '';
+#    profileExtra = ''
+ #     if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+  #      exec uwsm start -S hyprland-uwsm.desktop
+   #   fi
+   # '';
   };
 
   services.dunst.enable = true;
@@ -51,6 +51,8 @@ in
   })
   configs;
 
+  services.mako.enable = true;
+
 	home.packages = with pkgs; [
     neovim
     neofetch
@@ -75,9 +77,7 @@ in
     ani-cli
     mpv
     inputs.nix-citizen.packages.${system}.rsi-launcher
-    qalculate-qt
     obs-studio
-    tickrs
     thunderbird
     wine
     winetricks
@@ -86,5 +86,6 @@ in
     unzip
     gale
     vscodium
+    aria2
   ];
 }

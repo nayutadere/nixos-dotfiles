@@ -8,14 +8,33 @@
     withUWSM = true;
   };
 
-  # Enable Wayland for Electron apps
+  # enable wayland for electron 'apps'
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  # Hyprland ecosystem packages
+  # gui file manager
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs; [
+      xfce.thunar-archive-plugin
+      xfce.thunar-volman
+      gnome-themes-extra
+      adwaita-icon-theme
+    ];
+  };
+  # cli file manager
+  programs.yazi.enable = true;
+
+  services = {
+    gvfs.enable = true; # auto mounting drives
+    tumbler.enable = true; # thumbnails on thunar
+  };
+
+  # minimal required packages
   environment.systemPackages = with pkgs; [
-    foot       # Terminal
-    waybar     # Status bar
-    swww       # Wallpaper (supports animations)
-    hyprshot   # Screenshots
+    foot       # terminal
+    waybar     # status bar
+    swww       # wallpaper
+    hyprshot   # screenshots
+    wl-clipboard # clipboard support
   ];
 }

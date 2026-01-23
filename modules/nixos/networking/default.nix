@@ -9,7 +9,7 @@ services.resolved = {
   networking = {
     # hostName is set per-host
     networkmanager.enable = true;
-    nameservers = [ "9.9.9.9" "149.112.112.112"];
+    nameservers = [ "9.9.9.10" "149.112.112.10"];
 
     interfaces = {
       enp11s0 = {
