@@ -21,8 +21,8 @@ in
             safe.directory = "~/nixos-dotfiles/";
         };
         settings = {
-          user.name = "nayutadere";
-          user.email = "nayutadere@gmail.com";
+            user.name = "nayuta";
+            user.email = "42507478+nayutadere@users.noreply.github.com";
         };
     };
 
@@ -39,7 +39,6 @@ in
   services.mpd = {
     enable = true;
     musicDirectory = "~/kani/Music";
-    # Optional:
     network.listenAddress = "any"; # if you want to allow non-localhost connections
     network.startWhenNeeded = true; # systemd feature: only start MPD service upon connection to its socket
     
