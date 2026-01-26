@@ -39,6 +39,10 @@ in
   services.mpd = {
     enable = true;
     musicDirectory = "~/kani/Music";
+<<<<<<< HEAD
+=======
+    # Optional:
+>>>>>>> refs/remotes/origin/main
     network.listenAddress = "any"; # if you want to allow non-localhost connections
     network.startWhenNeeded = true; # systemd feature: only start MPD service upon connection to its socket
     
@@ -84,6 +88,9 @@ in
     jdk
     unzip
     gale
+<<<<<<< HEAD
     godot
+=======
+>>>>>>> refs/remotes/origin/main
   ];
 }

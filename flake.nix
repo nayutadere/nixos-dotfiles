@@ -29,10 +29,8 @@
       ...
     }@inputs:
     {
-      nixosConfigurations.hitori = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.futari = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-
-        specialArgs = { inherit inputs; };
         modules = [
           ./hosts/hitori # Host-specific config (imports shared configuration.nix)
           home-manager.nixosModules.home-manager
@@ -50,7 +48,6 @@
       };
       nixosConfigurations.futari = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-
         specialArgs = { inherit inputs; };
 
         modules = [
