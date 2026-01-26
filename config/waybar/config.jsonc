@@ -7,9 +7,9 @@
 
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces",
+        "mango/workspaces",
         "custom/sep",
-        "hyprland/window",
+        "mango/window",
         "custom/sep"
     ],
     "modules-center": [
@@ -31,7 +31,7 @@
     ],
 
     // Modules configuration
-    "hyprland/workspaces": {
+    "mango/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "warp-on-scroll": false,
@@ -40,7 +40,7 @@
             "*" : 9
         }
     },
-    "hyprland/window" : {
+    "mango/window" : {
         "max-length": 40,
         "seperate-outputs": false
     },
