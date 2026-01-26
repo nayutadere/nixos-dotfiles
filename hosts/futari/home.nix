@@ -20,6 +20,10 @@ in
         extraConfig = {
             safe.directory = "~/nixos-dotfiles/";
         };
+        settings = {
+            user.name = "nayuta";
+            user.email = "42507478+nayutadere@users.noreply.github.com";
+        };
     };
 
 	home.stateVersion = "25.05";
