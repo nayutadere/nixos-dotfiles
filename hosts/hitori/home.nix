@@ -3,10 +3,10 @@ let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
-    hypr = "hypr";
     nvim = "nvim";
     waybar = "waybar";
     foot = "foot";
+    mango = "mango";
   };
 in
 
@@ -20,11 +20,14 @@ in
 		shellAliases = {
 		  editos = "nvim ~/nixos-dotfiles/";
     };
+<<<<<<< Updated upstream
 #    profileExtra = ''
  #     if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
   #      exec uwsm start -S hyprland-uwsm.desktop
    #   fi
    # '';
+=======
+>>>>>>> Stashed changes
   };
 
   services.dunst.enable = true;

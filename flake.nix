@@ -33,6 +33,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/hitori # Host-specific config (imports shared configuration.nix)
+          inputs.mango.nixosModules.mango
           home-manager.nixosModules.home-manager
           {
             home-manager = {

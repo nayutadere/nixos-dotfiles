@@ -13,11 +13,15 @@
     #
     ../../modules/nixos/mangowc
     ../../modules/nixos/common
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     ../../modules/nixos/fonts
 =======
     #../../modules/nixos/fonts
 >>>>>>> refs/remotes/origin/main
+=======
+    ../../modules/nixos/fonts
+>>>>>>> Stashed changes
     ../../modules/nixos/networking
     ];
 
