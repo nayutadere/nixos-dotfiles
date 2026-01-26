@@ -1,4 +1,4 @@
-# host config for "klee" (T420 thinkpad)
+# host config for "futari" (T420 thinkpad)
 
 { config, lib, pkgs, ...}:
 
@@ -9,7 +9,7 @@
     #
     ../../modules/nixos/mangowc
     ../../modules/nixos/common
-    #../../modules/nixos/fonts
+    ../../modules/nixos/fonts
     ../../modules/nixos/networking
     ];
 

@@ -20,6 +20,10 @@ in
         extraConfig = {
             safe.directory = "~/nixos-dotfiles/";
         };
+        settings = {
+          user.name = "nayutadere";
+          user.email = "nayutadere@gmail.com";
+        };
     };
 
 	home.stateVersion = "25.05";
@@ -81,5 +85,6 @@ in
     jdk
     unzip
     gale
+    godot
   ];
 }
