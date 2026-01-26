@@ -20,14 +20,6 @@ in
 		shellAliases = {
 		  editos = "nvim ~/nixos-dotfiles/";
     };
-<<<<<<< Updated upstream
-#    profileExtra = ''
- #     if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-  #      exec uwsm start -S hyprland-uwsm.desktop
-   #   fi
-   # '';
-=======
->>>>>>> Stashed changes
   };
 
   services.dunst.enable = true;

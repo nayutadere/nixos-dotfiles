@@ -29,7 +29,7 @@
       ...
     }@inputs:
     {
-      nixosConfigurations.futari = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.hitori = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./hosts/hitori # Host-specific config (imports shared configuration.nix)
