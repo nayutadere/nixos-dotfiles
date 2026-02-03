@@ -64,8 +64,7 @@
       };
       volumes = [
         "/var/lib/qbittorrent:/config"
-        "/mnt/media/downloads:/downloads"   
-        "/mnt/media/incomplete:/incomplete"
+        "/mnt/media/downloads:/downloads"
         "/mnt/media:/mnt/media"
       ];
       extraOptions = [ "--network=container:gluetun" ];
