@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # host config for "futari" (T420 thinkpad)
-=======
-# host config for "klee" (T420 thinkpad)
->>>>>>> refs/remotes/origin/main
 
 { config, lib, pkgs, ...}:
 
@@ -10,20 +6,18 @@
     imports = [
     ./hardware-configuration.nix
 
-    #
-    ../../modules/nixos/mangowc
+    # ../../modules/nixos/mangowc  # module does not exist yet
     ../../modules/nixos/common
-<<<<<<< Updated upstream
-<<<<<<< HEAD
     ../../modules/nixos/fonts
-=======
-    #../../modules/nixos/fonts
->>>>>>> refs/remotes/origin/main
-=======
-    ../../modules/nixos/fonts
->>>>>>> Stashed changes
     ../../modules/nixos/networking
     ];
 
+    # Bootloader
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
+
     networking.hostName = "futari";
+
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    system.stateVersion = "25.11";
 }

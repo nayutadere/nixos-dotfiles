@@ -1,5 +1,9 @@
 # Hyprland desktop environment module
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 
 {
   programs.hyprland = {
@@ -12,17 +16,19 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # gui file manager
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs; [
-      xfce.thunar-archive-plugin
-      xfce.thunar-volman
-      gnome-themes-extra
-      adwaita-icon-theme
-    ];
+  programs = {
+    thunar = {
+      enable = true;
+      plugins = with pkgs; [
+        xfce.thunar-archive-plugin
+        xfce.thunar-volman
+        gnome-themes-extra
+        adwaita-icon-theme
+      ];
+    };
+    # cli file manager
+    yazi.enable = true;
   };
-  # cli file manager
-  programs.yazi.enable = true;
 
   services = {
     gvfs.enable = true; # auto mounting drives
@@ -31,10 +37,10 @@
 
   # minimal required packages
   environment.systemPackages = with pkgs; [
-    foot       # terminal
-    waybar     # status bar
-    swww       # wallpaper
-    hyprshot   # screenshots
+    foot # terminal
+    waybar # status bar
+    swww # wallpaper
+    hyprshot # screenshots
     wl-clipboard # clipboard support
   ];
 }
