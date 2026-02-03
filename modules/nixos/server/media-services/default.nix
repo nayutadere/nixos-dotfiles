@@ -1,5 +1,10 @@
 # Media services module - Jellyfin and *arr stack
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # Hardware acceleration for Jellyfin
@@ -14,18 +19,22 @@
 
   services.jellyfin = {
     enable = true;
+    openFirewall = true;
   };
 
   services.sonarr = {
     enable = true;
+    openFirewall = true;
   };
 
   services.radarr = {
     enable = true;
+    openFirewall = true;
   };
 
   services.bazarr = {
     enable = true;
+    openFirewall = true;
   };
 
   # Add service users to media group

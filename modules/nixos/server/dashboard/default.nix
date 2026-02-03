@@ -5,7 +5,6 @@
   services.homepage-dashboard = {
     enable = true;
     listenPort = 3000;
-    # API keys are decrypted at runtime by agenix; nothing in the Nix store.
     environmentFile = config.age.secrets.homepage-env.path;
     allowedHosts = "dash.${domain}";
 

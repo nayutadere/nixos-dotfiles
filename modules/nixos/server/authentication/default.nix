@@ -29,16 +29,18 @@
       access_control = {
         default_policy = "deny";
         rules = [
-          # Jellyfin & Jellyseerr have their own auth
           {
             domain = "jellyfin.${domain}";
+            policy = "bypass";
+          }
+          {
+            domain = "qbit.${domain}";
             policy = "bypass";
           }
           {
             domain = "requests.${domain}";
             policy = "bypass";
           }
-          # Everything else requires login
           {
             domain = "*.${domain}";
             policy = "one_factor";
@@ -60,7 +62,7 @@
       regulation = {
         max_retries = 3;
         find_time = "2m";
-        ban_time = "1h";
+        ban_time = "10y";
       };
 
       storage.local.path = "/var/lib/authelia-main/db.sqlite3";

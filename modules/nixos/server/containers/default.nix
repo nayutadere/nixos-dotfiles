@@ -1,13 +1,19 @@
 # Container module - Podman and OCI containers
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
     dockerSocket.enable = true;
+    defaultNetwork.settings.dns_enabled = true;
   };
-  
+
   systemd.services = {
     "podman-qbittorrent" = {
       wants = [ "podman-gluetun.service" ];
@@ -41,6 +47,9 @@
         "9696:9696" # prowlarr
         "8191:8191"
       ];
+      environment = {
+        FIREWALL_OUTBOUND_SUBNETS = "192.168.1.0/24";
+      };
       extraOptions = [
         "--privileged" # required, apparently
       ];
@@ -55,6 +64,8 @@
       };
       volumes = [
         "/var/lib/qbittorrent:/config"
+        "/mnt/media/downloads:/downloads"   
+        "/mnt/media/incomplete:/incomplete"
         "/mnt/media:/mnt/media"
       ];
       extraOptions = [ "--network=container:gluetun" ];

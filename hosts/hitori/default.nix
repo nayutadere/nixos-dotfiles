@@ -14,7 +14,7 @@
     ../../modules/nixos/gaming
     ../../modules/nixos/gui
     ../../modules/nixos/hyprland
-    # ../../modules/nixos/syncthing  # uncomment when needed
+    ../../modules/nixos/syncthing 
   ];
 
   # bootloader
