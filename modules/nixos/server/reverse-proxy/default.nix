@@ -19,12 +19,12 @@
         reverse_proxy localhost:3000
       '';
 
-      "jellyfin.${domain}".extraConfig = ''
-        reverse_proxy localhost:8096
-      '';
-
-      "requests.${domain}".extraConfig = ''
-        reverse_proxy localhost:5055
+      "notes.${domain}".extraConfig = ''
+        forward_auth localhost:9091 {
+            uri /api/authz/forward-auth
+            copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
+        }
+        reverse_proxy localhost:8085
       '';
 
       "sonarr.${domain}".extraConfig = ''
@@ -64,7 +64,20 @@
       '';
 
       "qbit.${domain}".extraConfig = ''
+        forward_auth localhost:9091 {
+          uri /api/authz/forward-auth
+          copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
+        }
         reverse_proxy localhost:8080
+      '';
+
+      #! Jellyfin and Jellyseerr need no auth
+      "jellyfin.${domain}".extraConfig = ''
+        reverse_proxy localhost:8096
+      '';
+      
+      "requests.${domain}".extraConfig = ''
+        reverse_proxy localhost:5055
       '';
     };
   };

@@ -15,6 +15,7 @@
     ../../modules/nixos/server/dashboard
     ../../modules/nixos/server/containers
     ../../modules/nixos/server/minecraft
+    ../../modules/nixos/server/factorio
     ../../modules/nixos/syncthing
   ];
 

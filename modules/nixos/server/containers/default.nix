@@ -39,6 +39,14 @@
       volumes = [ "/var/lib/jellyseerr:/app/config" ];
     };
 
+    trilium = {
+      image = "triliumnext/notes:latest";
+      ports = [ "8085:8080" ];
+      volumes = [
+        "/var/lib/trilium:/home/node/trilium-data"
+      ];
+    };
+
     gluetun = {
       image = "qmcgaw/gluetun";
       environmentFiles = [ config.age.secrets.vpn-env.path ];
@@ -64,7 +72,7 @@
       };
       volumes = [
         "/var/lib/qbittorrent:/config"
-        "/mnt/media/downloads:/downloads"
+        "/mnt/media/downloads:/mnt/media/downloads"
         "/mnt/media:/mnt/media"
       ];
       extraOptions = [ "--network=container:gluetun" ];
