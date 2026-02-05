@@ -37,10 +37,11 @@
 
   # minimal required packages
   environment.systemPackages = with pkgs; [
-    foot # terminal
-    waybar # status bar
-    swww # wallpaper
-    hyprshot # screenshots
+    foot         # terminal
+    waybar       # status bar
+    swaybg       # wallpaper
+    fuzzel       # app start
+    hyprshot     # screenshots
     wl-clipboard # clipboard support
   ];
 }

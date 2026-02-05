@@ -7,9 +7,9 @@
 
     // Choose the order of the modules
     "modules-left": [
-        "mango/workspaces",
+        "hyprland/workspaces",
         "custom/sep",
-        "mango/window",
+        "hyprland/window",
         "custom/sep"
     ],
     "modules-center": [

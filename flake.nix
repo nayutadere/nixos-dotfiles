@@ -30,7 +30,7 @@
       nixosConfigurations.hitori = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/hitori # Host-specific config (imports shared configuration.nix)
+          ./hosts/hitori # Host-specific config
           home-manager.nixosModules.home-manager
           {
             home-manager = {
