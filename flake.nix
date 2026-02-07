@@ -28,18 +28,18 @@
     }@inputs:
     {
       nixosConfigurations.hitori = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/hitori # Host-specific config
-          home-manager.nixosModules.home-manager
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };  # Add this line
+
+      modules = [
+        ./hosts/hitori
+        home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               users.nayuta = import ./hosts/hitori/home.nix;
               backupFileExtension = "backup";
-
-              extraSpecialArgs = { inherit inputs; };
             };
           }
         ];

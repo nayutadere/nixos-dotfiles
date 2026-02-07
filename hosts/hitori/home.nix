@@ -23,14 +23,6 @@ in
     enable = true;
     shellAliases = {
       editos = "nvim ~/nixos-dotfiles/";
-  home.username = "nayuta";
-  home.homeDirectory = "/home/nayuta";
-  programs.git.enable = true;
-  home.stateVersion = "25.05";
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      editos = "nvim ~/nixos-dotfiles/";
     };
   };
   
