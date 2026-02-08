@@ -17,7 +17,7 @@
     rmpc # music
     ani-cli # anime
     gimp3
-    winboat
+    (bottles.override {removeWarningPopup = true;})
     obsidian
     vscodium
     neovim
