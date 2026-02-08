@@ -9,19 +9,21 @@
     qimgv
     thud
     xarchiver
-    (discord.override {
-      withOpenASAR = true;
-      withVencord = true;
-    })
+    discord
+    #(discord.override {
+    #  withVencord = true;
+    #})
     mpv # video player
     rmpc # music
     ani-cli # anime
     gimp3
-    (lutris.override { extraPkgs = pkgs: [ winetricks ]; })
+    winboat
     obsidian
     vscodium
     neovim
     aria2 # cli download manager
     obs-studio
+    krita
+    kdePackages.kdenlive
   ];
 }

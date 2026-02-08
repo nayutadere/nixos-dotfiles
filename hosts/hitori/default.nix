@@ -15,6 +15,7 @@
     ../../modules/nixos/gui
     ../../modules/nixos/hyprland
     ../../modules/nixos/syncthing 
+    ../../modules/nixos/podman
   ];
 
   # bootloader
