@@ -17,23 +17,30 @@
     agenix = {
       url = "github:ryantm/agenix";
     };
+
+    copyparty = {
+      url = "github:9001/copyparty";
+    };
+
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , home-manager
-    , agenix
-    , ...
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      agenix,
+      copyparty,
+      ...
     }@inputs:
     {
       nixosConfigurations.hitori = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; };  # Add this line
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; }; # Add this line
 
-      modules = [
-        ./hosts/hitori
-        home-manager.nixosModules.home-manager
+        modules = [
+          ./hosts/hitori
+          home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -74,37 +81,11 @@
         specialArgs = {
           inherit inputs;
           domain = "bocchide.re";
-          email  = "nayutadere@gmail.com";
+          email = "nayutadere@gmail.com";
         };
 
         modules = [
           ./hosts/shorekeeper
-          agenix.nixosModules.default
-          {
-            age.secrets = {
-              vpn-env = {
-                file = ./secrets/vpn.env.age;
-              };
-              homepage-env = {
-                file = ./secrets/homepage.env.age;
-              };
-              authelia-jwt = {
-                file  = ./secrets/authelia-jwt.age;
-                owner = "authelia-main";
-                mode  = "0440";
-              };
-              authelia-storage = {
-                file  = ./secrets/authelia-storage.age;
-                owner = "authelia-main";
-                mode  = "0440";
-              };
-              authelia-session = {
-                file  = ./secrets/authelia-session.age;
-                owner = "authelia-main";
-                mode  = "0440";
-              };
-            };
-          }
         ];
       };
     };

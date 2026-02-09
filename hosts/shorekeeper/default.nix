@@ -6,17 +6,20 @@
     ./hardware-configuration.nix
 
     # Server modules
-    ../../modules/nixos/server/security
-    ../../modules/nixos/server/networking
-    ../../modules/nixos/server/users
-    ../../modules/nixos/server/media-services
-    ../../modules/nixos/server/authentication
-    ../../modules/nixos/server/reverse-proxy
-    ../../modules/nixos/server/dashboard
-    ../../modules/nixos/server/containers
-    ../../modules/nixos/server/minecraft
-    ../../modules/nixos/server/factorio
-    ../../modules/nixos/syncthing
+    ../../modules/server/security
+    ../../modules/server/networking
+    ../../modules/server/users
+    ../../modules/server/media-services
+    ../../modules/server/authentication
+    ../../modules/server/reverse-proxy
+    ../../modules/server/dashboard
+    ../../modules/server/containers
+    ../../modules/server/minecraft
+    ../../modules/server/factorio
+    # ../../modules/server/syncthing
+    ../../modules/server/copyparty
+    ../../modules/server/agenix
+    ../../modules/server/searxng
   ];
 
   # Bootloader

@@ -1,5 +1,11 @@
 # Security module - SSH and fail2ban configuration
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  domain,
+  ...
+}:
 
 {
   services.openssh = {
@@ -8,6 +14,7 @@
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "no";
+      MaxAuthTries = 3;
     };
   };
 

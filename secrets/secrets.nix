@@ -10,4 +10,5 @@ in
   "authelia-jwt.age".publicKeys     = users ++ [ shorekeeper ];
   "authelia-storage.age".publicKeys = users ++ [ shorekeeper ];
   "authelia-session.age".publicKeys = users ++ [ shorekeeper ];
+  "searxng-secret.age".publicKeys = users ++ [ shorekeeper ];
 }
