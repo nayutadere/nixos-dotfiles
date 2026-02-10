@@ -13,6 +13,7 @@
     #(discord.override {
     #  withVencord = true;
     #})
+    fluffychat
     mpv # video player
     rmpc # music
     ani-cli # anime
