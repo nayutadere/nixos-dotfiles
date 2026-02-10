@@ -17,10 +17,11 @@
     ../../modules/server/minecraft
     ../../modules/server/factorio
     # ../../modules/server/syncthing
-    ../../modules/server/copyparty
+    # ../../modules/server/copyparty
     ../../modules/server/agenix
     ../../modules/server/searxng
-    # ../../modules/server/matrix
+    #../../modules/server/teamspeak
+    ../../modules/server/matrix
   ];
 
   # Bootloader
