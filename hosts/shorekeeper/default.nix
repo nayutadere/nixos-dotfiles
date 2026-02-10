@@ -20,6 +20,7 @@
     ../../modules/server/copyparty
     ../../modules/server/agenix
     ../../modules/server/searxng
+    # ../../modules/server/matrix
   ];
 
   # Bootloader
