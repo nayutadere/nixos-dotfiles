@@ -11,4 +11,5 @@ in
   "authelia-storage.age".publicKeys = users ++ [ shorekeeper ];
   "authelia-session.age".publicKeys = users ++ [ shorekeeper ];
   "searxng-secret.age".publicKeys = users ++ [ shorekeeper ];
+  "anki-password.age".publicKeys = users ++ [ shorekeeper ];
 }

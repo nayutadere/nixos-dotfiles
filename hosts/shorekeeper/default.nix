@@ -22,6 +22,7 @@
     ../../modules/server/searxng
     #../../modules/server/teamspeak
     ../../modules/server/matrix
+    ../../modules/server/anki
   ];
 
   # Bootloader

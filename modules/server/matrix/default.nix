@@ -22,7 +22,6 @@ in
   };
 
   services.caddy = {
-    enable = true;
     virtualHosts."${domain}" = {
       extraConfig = ''
         # Federation: tells other servers where to connect

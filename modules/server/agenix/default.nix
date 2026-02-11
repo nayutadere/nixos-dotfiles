@@ -29,5 +29,8 @@
     searxng-secret = {
       file = ../../../secrets/searxng-secret.age;
     };
+    anki-secret = {
+      file = ../../../secrets/anki-password.age;
+    };
   };
 }
