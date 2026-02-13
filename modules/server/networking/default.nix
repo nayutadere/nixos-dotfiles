@@ -19,11 +19,10 @@
   services.tailscale.enable = true;
 
   networking.firewall.allowedTCPPorts = [
-    22
     80
     443
-    25565
-    7777
-    34197
+    25565 #minecraft
+    7777 #terraria
+    34197 #factorio
   ];
 }

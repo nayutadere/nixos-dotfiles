@@ -33,11 +33,6 @@
   };
 
   virtualisation.oci-containers.containers = {
-    jellyseerr = {
-      image = "fallenbagel/jellyseerr";
-      extraOptions = [ "--network=host" ];
-      volumes = [ "/var/lib/jellyseerr:/app/config" ];
-    };
 
     trilium = {
       image = "triliumnext/notes:latest";
@@ -53,7 +48,7 @@
       ports = [
         "8080:8080" # qbittorrent
         "9696:9696" # prowlarr
-        "8191:8191"
+        "8191:8191" # flaresolverr
       ];
       environment = {
         FIREWALL_OUTBOUND_SUBNETS = "192.168.1.0/24";

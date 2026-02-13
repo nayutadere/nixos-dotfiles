@@ -11,8 +11,6 @@ in
     settings = {
       global = {
         server_name = domain;
-        # Listening on localhost by default
-        # address and port are handled automatically
         allow_registration = false;
         allow_encryption = true;
         allow_federation = true;
@@ -49,12 +47,8 @@ in
     };
   };
 
-  # ───────────────────────────────────────────
-  # Firewall
-  # ───────────────────────────────────────────
-  networking.firewall.allowedTCPPorts = [
-    80    # HTTP (for ACME/redirect)
-    443   # HTTPS
-    # 8448  # Matrix federation port (optional, .well-known handles this on 443)
-  ];
+  # networking.firewall.allowedTCPPorts = [
+  #   80
+  #   443
+  # ];
 }

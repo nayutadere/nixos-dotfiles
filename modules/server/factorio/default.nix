@@ -14,7 +14,7 @@
     enable = true;
     openFirewall = true;
 
-    game-name = "Your Server";
+    game-name = "fucktorio";
     lan = true;
 
     extraSettings = {
