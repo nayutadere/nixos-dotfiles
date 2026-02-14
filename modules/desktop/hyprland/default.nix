@@ -1,4 +1,3 @@
-# Hyprland desktop environment module
 { config
 , lib
 , pkgs

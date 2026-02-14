@@ -1,14 +1,23 @@
-# Host configuration for "shorekeeper" (media server)
+# shorekeeper
 { config, lib, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
 
-    # Server modules
+    # core
+    ../../modules/core/base.nix
+    ../../modules/core/users.nix
+
+    # shared
+    ../../modules/shared/networking.nix
+    ../../modules/shared/security.nix
+    ../../modules/shared/podman
+
+    # server specific security
     ../../modules/server/security
-    ../../modules/server/networking
-    ../../modules/server/users
+
+    # server modules
     ../../modules/server/media-services
     ../../modules/server/authentication
     ../../modules/server/reverse-proxy
@@ -16,42 +25,34 @@
     ../../modules/server/containers
     ../../modules/server/minecraft
     ../../modules/server/factorio
-    # ../../modules/server/syncthing
     ../../modules/server/agenix
     ../../modules/server/searxng
-    #../../modules/server/teamspeak
     ../../modules/server/matrix
     ../../modules/server/anki
+    # ../../modules/server/teamspeak
   ];
 
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Hostname
   networking.hostName = "shorekeeper";
 
-  # nix-ld for dynamic binaries
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+    25565
+    34197
+  ];
+
+  networking.firewall.allowedUDPPorts = [
+    34197
+  ];
+
+  # nix-ld for running dynamic binaries
   programs.nix-ld.enable = true;
 
-  # System packages
   environment.systemPackages = with pkgs; [
-    vim
-    git
-    htop
-    tmux
-    docker-compose
-    libva-utils
-    jdk21
-    nixfmt
-    wget
+    libva-utils     # hardware video acceleration utilities
+    jdk21           # java for Minecraft
   ];
 
-  # Nix settings
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
+  # State version (don't change after initial install)
   system.stateVersion = "25.11";
 }

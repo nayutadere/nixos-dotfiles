@@ -1,7 +1,4 @@
-{ pkgs
-, inputs
-, ...
-}:
+{ pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
     vivaldi
@@ -10,16 +7,12 @@
     thud
     xarchiver
     discord
-    #(discord.override {
-    #  withVencord = true;
-    #})
-    fluffychat
     mpv # video player
     rmpc # music
     ani-cli # anime
     gimp3
-    (bottles.override {removeWarningPopup = true;})
-    obsidian
+    (lutris.override { extraPkgs = pkgs: [ winetricks ]; })
+    trilium
     vscodium
     neovim
     aria2 # cli download manager

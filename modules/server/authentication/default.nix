@@ -1,4 +1,3 @@
-# Authentication module - Authelia SSO
 { config, lib, pkgs, domain, ... }:
 
 {

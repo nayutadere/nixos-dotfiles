@@ -1,23 +1,29 @@
-# host config for "futari" (T420 thinkpad)
-
-{ config, lib, pkgs, ...}:
+# furati
+{ config, lib, pkgs, ... }:
 
 {
-    imports = [
+  imports = [
     ./hardware-configuration.nix
 
-    # ../../modules/nixos/mangowc  # module does not exist yet
-    ../../modules/nixos/common
-    ../../modules/nixos/fonts
-    ../../modules/nixos/networking
-    ];
+    # core
+    ../../modules/core/base.nix
+    ../../modules/core/users.nix
 
-    # Bootloader
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+    # shared
+    ../../modules/shared/networking.nix
+    ../../modules/shared/security.nix
+    ../../modules/shared/fonts
 
-    networking.hostName = "futari";
+    # ../../modules/desktop/graphics
+    # ../../modules/desktop/gui
+  ];
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-    system.stateVersion = "25.11";
+  # Hostname
+  networking.hostName = "futari";
+
+  # Laptop-specific: TLP for battery management
+  services.tlp.enable = true;
+
+  # State version (don't change after initial install)
+  system.stateVersion = "25.11";
 }

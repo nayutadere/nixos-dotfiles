@@ -1,4 +1,3 @@
-# Minecraft server module - ATM10
 { config, lib, pkgs, ... }:
 
 {

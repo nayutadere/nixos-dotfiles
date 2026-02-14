@@ -169,7 +169,7 @@
       }
       {
         search = {
-          provider = "duckduckgo";
+          provider = "duckduckgo"; #set custom search provider to searxng
           target = "_blank";
         };
       }

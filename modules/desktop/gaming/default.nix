@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+{
   # game mode
   programs.gamemode.enable = true;
 
@@ -13,7 +14,7 @@
     protonplus # wine/proton compatibility tool with gui
     mangohud # performance tracker
     prismlauncher # minecraft launcher
-    gale # mod manager 
+    gale # mod manager
     inputs.nix-citizen.packages.${system}.rsi-launcher # star citizen
   ];
 }

@@ -1,33 +1,47 @@
-# Host configuration for "hitori" (main desktop)
+# hitori
 { config, lib, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
 
-    # Modules
-    ../../modules/nixos/common
-    ../../modules/nixos/networking
-    ../../modules/nixos/fonts
-    ../../modules/nixos/audio
-    ../../modules/nixos/graphics
-    ../../modules/nixos/gaming
-    ../../modules/nixos/gui
-    ../../modules/nixos/hyprland
-    ../../modules/nixos/syncthing 
-    ../../modules/nixos/podman
+    # core
+    ../../modules/core/base.nix
+    ../../modules/core/users.nix
+
+    # shared
+    ../../modules/shared/networking.nix
+    ../../modules/shared/security.nix
+    ../../modules/shared/fonts
+    ../../modules/shared/audio
+    ../../modules/shared/podman
+    ../../modules/shared/syncthing
+
+    # desktop
+    ../../modules/desktop/graphics
+    ../../modules/desktop/gaming
+    ../../modules/desktop/gui
+    ../../modules/desktop/hyprland
   ];
 
-  # bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # Hostname
+  networking.hostName = "hitori";
 
-  # enable firmware updates
+  # firmware updates for laptop/desktop hardware
   services.fwupd.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  system.stateVersion = "25.11";
+  # firewall ports for Syncthing
+  networking.firewall = {
+    allowedTCPPorts = [ 8384 ];  # syncthing Web UI
+    allowedUDPPorts = [ 9 ];     # wake-on-LAN
+  };
 
-  # host-specific settings
-  networking.hostName = "hitori";
+  # appimage support
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
+  # State version (don't change after initial install)
+  system.stateVersion = "25.11";
 }

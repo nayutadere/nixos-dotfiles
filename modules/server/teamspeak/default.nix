@@ -3,7 +3,7 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  # Create a dedicated user
+  # create a dedicated user
   users.users.teamspeak = {
     isSystemUser = true;
     group = "teamspeak";
@@ -12,7 +12,7 @@
   };
   users.groups.teamspeak = {};
 
-  # Run it as a systemd service
+  # run as a systemd service
   systemd.services.teamspeak = {
     description = "TeamSpeak Server";
     after = [ "network.target" ];
@@ -27,7 +27,7 @@
     };
   };
 
-  # Firewall
+  # firewall
   networking.firewall.allowedUDPPorts = [ 9987 ];
   networking.firewall.allowedTCPPorts = [ 10011 30033 ];
 }
