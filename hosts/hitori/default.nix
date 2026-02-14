@@ -11,7 +11,7 @@
 
     # shared
     ../../modules/shared/networking.nix
-    # ../../modules/shared/security.nix
+    ../../modules/shared/security.nix
     ../../modules/shared/fonts
     ../../modules/shared/audio
     ../../modules/shared/podman
