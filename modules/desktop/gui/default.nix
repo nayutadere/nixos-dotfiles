@@ -8,11 +8,11 @@
     xarchiver
     discord
     mpv # video player
-    rmpc # music
+    rmpc # music1
     ani-cli # anime
     gimp3
     (lutris.override { extraPkgs = pkgs: [ winetricks ]; })
-    trilium
+    trilium-desktop
     vscodium
     neovim
     aria2 # cli download manager

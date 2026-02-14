@@ -19,8 +19,8 @@
     thunar = {
       enable = true;
       plugins = with pkgs; [
-        xfce.thunar-archive-plugin
-        xfce.thunar-volman
+        thunar-archive-plugin
+        thunar-volman
         gnome-themes-extra
         adwaita-icon-theme
       ];

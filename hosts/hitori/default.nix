@@ -11,20 +11,20 @@
 
     # shared
     ../../modules/shared/networking.nix
-    ../../modules/shared/security.nix
+    # ../../modules/shared/security.nix
     ../../modules/shared/fonts
     ../../modules/shared/audio
     ../../modules/shared/podman
     ../../modules/shared/syncthing
 
     # desktop
+    ../../modules/desktop/vpn
     ../../modules/desktop/graphics
     ../../modules/desktop/gaming
     ../../modules/desktop/gui
     ../../modules/desktop/hyprland
   ];
 
-  # Hostname
   networking.hostName = "hitori";
 
   # firmware updates for laptop/desktop hardware

@@ -26,7 +26,7 @@
     "net.ipv6.conf.default.accept_redirects" = 0;
 
     # ignore ICMP pings (no more pinging the server)
-    "net.ipv4.icmp_echo_ignore_all" = 1;
+    "net.ipv4.icmp_echo_ignore_all" = 0;
 
     # disable source routing (prevent ip spoof)
     "net.ipv4.conf.all.accept_source_route" = 0;
@@ -52,9 +52,9 @@
     # kernel hardening
     "kernel.dmesg_restrict" = 1; # Prevent non-root from reading kernel logs
     "kernel.kptr_restrict" = 2;  # Hide kernel pointers (prevents exploits)
-    "kernel.unprivileged_bpf_disabled" = 1; # Disable unprivileged BPF
-    "kernel.unprivileged_userns_clone" = 0; # Disable unprivileged user namespaces
-    "kernel.yama.ptrace_scope" = 2; # Restrict ptrace to prevent process inspection
+    "kernel.unprivileged_bpf_disabled" = 0; # Disable unprivileged BPF
+    "kernel.unprivileged_userns_clone" = 1;
+    "kernel.yama.ptrace_scope" = 1; # Restrict ptrace to prevent process inspection
 
     # filesystem hardening
     "fs.protected_hardlinks" = 1;  # Prevent hardlink exploits
@@ -65,7 +65,7 @@
 
   boot.blacklistedKernelModules = [
     "dccp"
-    "sctp"
+    # "sctp"
     "rds"
     "tipc"
 
@@ -75,7 +75,7 @@
     "jffs2"
     "hfs"
     "hfsplus"
-    "udf"
+    # "udf"
   ];
 
   networking.firewall = {
