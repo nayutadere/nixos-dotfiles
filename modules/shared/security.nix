@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # automatically update the system with security patches
@@ -51,16 +56,16 @@
 
     # kernel hardening
     "kernel.dmesg_restrict" = 1; # Prevent non-root from reading kernel logs
-    "kernel.kptr_restrict" = 2;  # Hide kernel pointers (prevents exploits)
+    "kernel.kptr_restrict" = 2; # Hide kernel pointers (prevents exploits)
     "kernel.unprivileged_bpf_disabled" = 0; # Disable unprivileged BPF
     "kernel.unprivileged_userns_clone" = 1;
     "kernel.yama.ptrace_scope" = 1; # Restrict ptrace to prevent process inspection
 
     # filesystem hardening
-    "fs.protected_hardlinks" = 1;  # Prevent hardlink exploits
-    "fs.protected_symlinks" = 1;   # Prevent symlink exploits
-    "fs.protected_fifos" = 2;      # Prevent FIFO exploits
-    "fs.protected_regular" = 2;    # Prevent file exploits in world-writable dirs
+    "fs.protected_hardlinks" = 1; # Prevent hardlink exploits
+    "fs.protected_symlinks" = 1; # Prevent symlink exploits
+    "fs.protected_fifos" = 2; # Prevent FIFO exploits
+    "fs.protected_regular" = 2; # Prevent file exploits in world-writable dirs
   };
 
   boot.blacklistedKernelModules = [
@@ -82,17 +87,20 @@
     enable = true;
 
     logRefusedConnections = true;
-    logRefusedPackets = false; #
+    logRefusedPackets = false;
 
     rejectPackets = false;
   };
 
-  services.openssh.settings = {
-    PasswordAuthentication = false;
-    PermitRootLogin = "no";
-    KbdInteractiveAuthentication = false;
-    X11Forwarding = false;
-    MaxAuthTries = 3;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+      KbdInteractiveAuthentication = false;
+      X11Forwarding = false;
+      MaxAuthTries = 3;
+    };
   };
 
   security.auditd.enable = true;

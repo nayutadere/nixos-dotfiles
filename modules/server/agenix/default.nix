@@ -32,5 +32,14 @@
     anki-secret = {
       file = ../../../secrets/anki-password.age;
     };
+    vpn-privateKey = {
+      file = ../../../secrets/vpn.privateKey.age;
+    };
+    vpn-publicKey = {
+      file = ../../../secrets/vpn.publicKey.age;
+    };
+    vpn-presharedKey = {
+      file = ../../../secrets/vpn.presharedKey.age;
+    };
   };
 }

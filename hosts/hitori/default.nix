@@ -10,6 +10,7 @@
     ../../modules/core/users.nix
 
     # shared
+    ../../modules/server/agenix #temp
     ../../modules/shared/networking.nix
     ../../modules/shared/security.nix
     ../../modules/shared/fonts

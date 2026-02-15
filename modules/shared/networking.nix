@@ -9,11 +9,11 @@
 
     settings = {
       Resolve = {
-        # validate DNS responses
-        # DNSSEC = "true";
+        #validate DNS responses
+         DNSSEC = "true";
 
-        # # try to encrypt DNS queries
-        # DNSOverTLS = "opportunistic";
+         # try to encrypt DNS queries
+         DNSOverTLS = "opportunistic";
       };
     };
   };

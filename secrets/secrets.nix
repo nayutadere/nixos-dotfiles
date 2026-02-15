@@ -16,4 +16,7 @@ in
   "authelia-session.age".publicKeys = allAccess;
   "searxng-secret.age".publicKeys = allAccess;
   "anki-password.age".publicKeys = allAccess;
+  "vpn.privateKey.age".publicKeys = allAccess;
+  "vpn.publicKey.age".publicKeys = allAccess;
+  "vpn.presharedKey.age".publicKeys = allAccess;
 }
