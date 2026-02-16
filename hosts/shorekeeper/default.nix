@@ -29,6 +29,7 @@
     ../../modules/server/searxng
     ../../modules/server/matrix
     ../../modules/server/anki
+    ../../modules/server/ai
     # ../../modules/server/teamspeak
   ];
 
