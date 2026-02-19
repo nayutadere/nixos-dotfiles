@@ -1,33 +1,45 @@
-{ config, pkgs, ... }:
+{config, lib, pkgs, ...}:
 
+let
+  cfg = config.services.shorekeeper.teamspeak;
+in
 {
-  nixpkgs.config.allowUnfree = true;
-
-  # create a dedicated user
-  users.users.teamspeak = {
-    isSystemUser = true;
-    group = "teamspeak";
-    home = "/var/lib/teamspeak";
-    createHome = true;
+  options.services.shorekeeper.teamspeak = {
+    enable = lib.mkEnableOption "enable teamspeak server hosting";
   };
-  users.groups.teamspeak = {};
 
-  # run as a systemd service
-  systemd.services.teamspeak = {
-    description = "TeamSpeak Server";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
+  config = lib.mkIf cfg.enable {
+    nixpkgs.config.allowUnfree = true;
 
-    serviceConfig = {
-      ExecStart = "${pkgs.teamspeak_server}/bin/ts3server license_accepted=1 dbsqlpath=${pkgs.teamspeak_server}/lib/teamspeak/sql/";
-      WorkingDirectory = "/var/lib/teamspeak";
-      User = "teamspeak";
-      Group = "teamspeak";
-      Restart = "on-failure";
+    # create a dedicated user
+    users.users.teamspeak = {
+      isSystemUser = true;
+      group = "teamspeak";
+      home = "/var/lib/teamspeak";
+      createHome = true;
     };
-  };
+    users.groups.teamspeak = { };
 
-  # firewall
-  networking.firewall.allowedUDPPorts = [ 9987 ];
-  networking.firewall.allowedTCPPorts = [ 10011 30033 ];
+    # run as a systemd service
+    systemd.services.teamspeak = {
+      description = "TeamSpeak Server";
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
+
+      serviceConfig = {
+        ExecStart = "${pkgs.teamspeak_server}/bin/ts3server license_accepted=1 dbsqlpath=${pkgs.teamspeak_server}/lib/teamspeak/sql/";
+        WorkingDirectory = "/var/lib/teamspeak";
+        User = "teamspeak";
+        Group = "teamspeak";
+        Restart = "on-failure";
+      };
+    };
+
+    # firewall
+    networking.firewall.allowedUDPPorts = [ 9987 ];
+    networking.firewall.allowedTCPPorts = [
+      10011
+      30033
+    ];
+  };
 }

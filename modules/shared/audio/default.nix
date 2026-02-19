@@ -1,4 +1,3 @@
-# Audio configuration module
 { config, lib, pkgs, ... }:
 
 {

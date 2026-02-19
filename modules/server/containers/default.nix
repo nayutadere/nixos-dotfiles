@@ -1,10 +1,5 @@
 # Container module - Podman and OCI containers
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, ...}:
 
 {
   virtualisation.podman = {

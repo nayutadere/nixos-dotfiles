@@ -74,8 +74,6 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
-          domain = "bocchide.re";
-          email = "nayutadere@gmail.com";
         };
 
         modules = [

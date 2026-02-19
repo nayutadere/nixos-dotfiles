@@ -1,4 +1,4 @@
-{ config, domain, ... }:
+{ config, ... }:
 {
   services.anki-sync-server = {
     openFirewall = false;
@@ -14,7 +14,7 @@
   };
   services.caddy = {
     virtualHosts = {
-      "anki.${domain}".extraConfig = ''
+      "anki.${config.serverData.domain}".extraConfig = ''
         reverse_proxy localhost:27701
       '';
     };

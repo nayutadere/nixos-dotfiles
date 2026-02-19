@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  environment.systemPackages = with pkgs; [
+    jdk21
+  ];
+
   systemd.services.atm10 = {
     description = "All The Mods 10 Server";
     wantedBy = [ "multi-user.target" ];

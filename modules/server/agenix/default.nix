@@ -6,40 +6,40 @@
 
   age.secrets = {
     vpn-env = {
-      file = ../../../secrets/vpn.env.age;
+      file = ../../../secrets/shorekeeper/vpn.env.age;
     };
     homepage-env = {
-      file = ../../../secrets/homepage.env.age;
+      file = ../../../secrets/shorekeeper/homepage.env.age;
     };
     authelia-jwt = {
-      file = ../../../secrets/authelia-jwt.age;
+      file = ../../../secrets/shorekeeper/authelia-jwt.age;
       owner = "authelia-main";
       mode = "0440";
     };
     authelia-storage = {
-      file = ../../../secrets/authelia-storage.age;
+      file = ../../../secrets/shorekeeper/authelia-storage.age;
       owner = "authelia-main";
       mode = "0440";
     };
     authelia-session = {
-      file = ../../../secrets/authelia-session.age;
+      file = ../../../secrets/shorekeeper/authelia-session.age;
       owner = "authelia-main";
       mode = "0440";
     };
     searxng-secret = {
-      file = ../../../secrets/searxng-secret.age;
+      file = ../../../secrets/shorekeeper/searxng-secret.age;
     };
     anki-secret = {
-      file = ../../../secrets/anki-password.age;
+      file = ../../../secrets/shorekeeper/anki-password.age;
     };
     vpn-privateKey = {
-      file = ../../../secrets/vpn.privateKey.age;
+      file = ../../../secrets/hitori/vpn.privateKey.age;
     };
     vpn-publicKey = {
-      file = ../../../secrets/vpn.publicKey.age;
+      file = ../../../secrets/hitori/vpn.publicKey.age;
     };
     vpn-presharedKey = {
-      file = ../../../secrets/vpn.presharedKey.age;
+      file = ../../../secrets/hitori/vpn.presharedKey.age;
     };
   };
 }

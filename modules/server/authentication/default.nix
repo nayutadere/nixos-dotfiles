@@ -1,4 +1,4 @@
-{ config, lib, pkgs, domain, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   services.authelia.instances.main = {
@@ -29,19 +29,15 @@
         default_policy = "deny";
         rules = [
           {
-            domain = "jellyfin.${domain}";
+            domain = "jellyfin.${config.serverData.domain}";
             policy = "bypass";
           }
           {
-            domain = "qbit.${domain}";
+            domain = "requests.${config.serverData.domain}";
             policy = "bypass";
           }
           {
-            domain = "requests.${domain}";
-            policy = "bypass";
-          }
-          {
-            domain = "*.${domain}";
+            domain = "*.${config.serverData.domain}";
             policy = "one_factor";
           }
         ];
@@ -50,8 +46,8 @@
       session = {
         cookies = [
           {
-            domain = domain;
-            authelia_url = "https://auth.${domain}";
+            domain = config.serverData.domain;
+            authelia_url = "https://auth.${config.serverData.domain}";
             expiration = "12h";
             inactivity = "45m";
           }

@@ -10,9 +10,9 @@ let
 in
 {
   "vpn.env.age".publicKeys = allAccess;
-  "homepage.env.age".publicKeys = allAccess; 
+  "homepage.env.age".publicKeys = allAccess;
   "authelia-jwt.age".publicKeys = allAccess;
-  "authelia-storage.age".publicKeys = allAccess; 
+  "authelia-storage.age".publicKeys = allAccess;
   "authelia-session.age".publicKeys = allAccess;
   "searxng-secret.age".publicKeys = allAccess;
   "anki-password.age".publicKeys = allAccess;

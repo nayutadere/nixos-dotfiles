@@ -1,5 +1,5 @@
 # shorekeeper
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 {
   imports = [
@@ -18,6 +18,7 @@
     ../../modules/server/security
 
     # server modules
+    ../../modules/server/vars
     ../../modules/server/media-services
     ../../modules/server/authentication
     ../../modules/server/reverse-proxy
@@ -30,10 +31,15 @@
     ../../modules/server/matrix
     ../../modules/server/anki
     ../../modules/server/ai
-    # ../../modules/server/teamspeak
+    ../../modules/server/teamspeak
   ];
 
   networking.hostName = "shorekeeper";
+
+  services.shorekeeper.searxng.enable = false;
+  services.shorekeeper.matrix.enable = false;
+  services.shorekeeper.ai.enable = true;
+  services.shorekeeper.teamspeak.enable = false;
 
   networking.firewall.allowedTCPPorts = [
     80
@@ -48,11 +54,6 @@
 
   # nix-ld for running dynamic binaries
   programs.nix-ld.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    libva-utils     # hardware video acceleration utilities
-    jdk21           # java for Minecraft
-  ];
 
   # State version (don't change after initial install)
   system.stateVersion = "25.11";

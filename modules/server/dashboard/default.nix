@@ -1,12 +1,12 @@
 # Dashboard module - Homepage dashboard
-{ config, lib, pkgs, domain, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   services.homepage-dashboard = {
     enable = true;
     listenPort = 3000;
     environmentFile = config.age.secrets.homepage-env.path;
-    allowedHosts = "dash.${domain}";
+    allowedHosts = "dash.${config.serverData.domain}";
 
     settings = {
       title = "Shorekeeper";
@@ -44,7 +44,7 @@
           {
             "Jellyfin" = {
               icon = "jellyfin.png";
-              href = "https://jellyfin.${domain}";
+              href = "https://jellyfin.${config.serverData.domain}";
               description = "Media Server";
               widget = {
                 type = "jellyfin";
@@ -57,7 +57,7 @@
           {
             "Jellyseerr" = {
               icon = "jellyseerr.png";
-              href = "https://requests.${domain}";
+              href = "https://requests.${config.serverData.domain}";
               description = "Media Requests";
               widget = {
                 type = "jellyseerr";
@@ -73,7 +73,7 @@
           {
             "Sonarr" = {
               icon = "sonarr.png";
-              href = "https://sonarr.${domain}";
+              href = "https://sonarr.${config.serverData.domain}";
               description = "TV Shows";
               widget = {
                 type = "sonarr";
@@ -85,7 +85,7 @@
           {
             "Radarr" = {
               icon = "radarr.png";
-              href = "https://radarr.${domain}";
+              href = "https://radarr.${config.serverData.domain}";
               description = "Movies";
               widget = {
                 type = "radarr";
@@ -97,7 +97,7 @@
           {
             "Bazarr" = {
               icon = "bazarr.png";
-              href = "https://bazarr.${domain}";
+              href = "https://bazarr.${config.serverData.domain}";
               description = "Subtitles";
               widget = {
                 type = "bazarr";
@@ -109,7 +109,7 @@
           {
             "Prowlarr" = {
               icon = "prowlarr.png";
-              href = "https://prowlarr.${domain}";
+              href = "https://prowlarr.${config.serverData.domain}";
               description = "Indexer Manager";
               widget = {
                 type = "prowlarr";
@@ -125,7 +125,7 @@
           {
             "qBittorrent" = {
               icon = "qbittorrent.png";
-              href = "https://qbit.${domain}";
+              href = "https://qbit.${config.serverData.domain}";
               description = "Torrent Client";
               widget = {
                 type = "qbittorrent";
@@ -176,7 +176,17 @@
     ];
 
     bookmarks = [
-      { "Admin" = [ { "Authelia" = [ { href = "https://auth.${domain}"; } ]; } ]; }
+      { "Admin" = [ { "Authelia" = [ { href = "https://auth.${config.serverData.domain}"; } ]; } ]; }
     ];
+  };
+
+  services.caddy.virtualHosts = {
+    "dash.${config.serverData.domain}".extraConfig = ''
+      forward_auth localhost:9091 {
+        uri /api/authz/forward-auth
+        copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
+      }
+      reverse_proxy localhost:3000
+    '';
   };
 }

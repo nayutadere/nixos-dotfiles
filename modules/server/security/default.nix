@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  domain,
-  ...
-}:
+{config, lib, pkgs, ...}:
 
 {
   services.openssh = {
@@ -48,7 +42,7 @@
   # anti virus
   services.clamav = {
     daemon.enable = true;
-    updater.enable = true;  # Keep virus definitions updated
+    updater.enable = true; # Keep virus definitions updated
     updater.interval = "daily";
     updater.frequency = 24;
   };
@@ -70,12 +64,11 @@
 
   # Install security monitoring tools
   environment.systemPackages = with pkgs; [
-    iptables        # firewall management
-    tcpdump         # network analysis
-    nmap            # network scanning
-    lynis           # check security
+    iptables # firewall management
+    tcpdump # network analysis
+    nmap # network scanning
+    lynis # check security
   ];
-
 
   # automatically reboot at 4-5 AM after updates if needed
   # use lib.mkForce to override the false value from shared/security.nix
