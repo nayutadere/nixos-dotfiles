@@ -1,24 +1,42 @@
-{config, pkgs, ...}:
+{config, lib, pkgs, ...}:
 
+let
+  cfg = config.services.jellyfin;
+in
 {
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      libva
-      libva-utils
-      mesa
-    ];
+  options.services.jellyfin = {
+    enableCaddy = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "automatically configure caddy";
+    };
+
+    subdomain = lib.mkOption {
+      type = lib.types.str;
+      default = "jellyfin";
+    };
   };
 
-  services.jellyfin = {
-    enable = true;
-    openFirewall = false;
-    group = "media";
-  };
+  config = lib.mkIf cfg.enable {
+    hardware.graphics = {
+        enable = true;
+        extraPackages = with pkgs; [
+          libva
+          libva-utils
+          mesa
+        ];
+      };
 
-  services.caddy.virtualHosts = {
-    "jellyfin.${config.serverData.domain}".extraConfig = ''
-      reverse_proxy localhost:8096
-    '';
+      services.jellyfin = {
+        openFirewall = false;
+        group = "media";
+      };
+
+      services.caddy.virtualHosts = lib.mkIf (cfg.enableCaddy) {
+        "${cfg.subdomain}.${config.serverData.domain}".extraConfig = ''
+          reverse_proxy localhost:8096
+        '';
+      };
+      #${toString cfg.settings.server.port} module doesn't expose port
   };
 }

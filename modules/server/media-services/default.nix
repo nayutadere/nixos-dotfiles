@@ -13,5 +13,8 @@
     ./sonar.nix
   ];
 
+  services.radarr.enable = true;
+  services.jellyfin.enable = true;
+
   users.groups.media = { };
 }
