@@ -7,5 +7,6 @@
     "nvidia"
   ];
 
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
   hardware.nvidia.open = true;
 }

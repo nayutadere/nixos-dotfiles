@@ -11,5 +11,6 @@
     dive # Look inside images
     podman-tui
     podman-compose
+    distrobox
   ];
 }

@@ -14,6 +14,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    steam-run
+    openmw
     protonplus # wine/proton compatibility tool with gui
     mangohud # performance tracker
     prismlauncher # minecraft launcher

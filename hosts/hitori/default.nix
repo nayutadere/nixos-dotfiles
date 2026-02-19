@@ -12,14 +12,14 @@
     # shared
     ../../modules/server/agenix #temp
     ../../modules/shared/networking.nix
-    ../../modules/shared/security.nix
+    #../../modules/shared/security.nix
     ../../modules/shared/fonts
     ../../modules/shared/audio
     ../../modules/shared/podman
     ../../modules/shared/syncthing
 
     # desktop
-    ../../modules/desktop/vpn
+    #../../modules/desktop/vpn
     ../../modules/desktop/graphics
     ../../modules/desktop/gaming
     ../../modules/desktop/gui
@@ -42,6 +42,9 @@
     enable = true;
     binfmt = true;
   };
+
+  services.flatpak.enable = true;
+
 
   # State version (don't change after initial install)
   system.stateVersion = "25.11";

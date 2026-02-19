@@ -4,9 +4,12 @@
 {
   networking.networkmanager.enable = true;
 
-  # services.resolved = {
-  #   enable = true;
+  services.openssh = {
+    enable = true;
+  };
 
+  services.resolved = {
+    enable = true;
   #   settings = {
   #     Resolve = {
   #       #validate DNS responses
