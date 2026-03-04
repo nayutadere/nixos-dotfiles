@@ -1,5 +1,15 @@
 { pkgs, inputs, ... }:
 {
+  nix.settings = {
+    substituters = [
+      "https://nix-citizen.cachix.org"
+      "https://ezkea.cachix.org"
+    ];
+    trusted-public-keys = [
+      "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo="
+      "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+    ];
+  };
   # game mode
   programs.gamemode.enable = true;
 

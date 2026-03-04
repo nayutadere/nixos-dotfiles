@@ -1,7 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
   ...
 }:
 
@@ -11,7 +8,7 @@
     enable = true;
     allowReboot = false;
     dates = "04:00";
-    flake = "path:/home/nayuta/nixos-dotfiles";
+    flake = "github:nayutadere/nixos-dotfiles";
   };
 
   boot.kernel.sysctl = {
@@ -57,7 +54,7 @@
     # kernel hardening
     "kernel.dmesg_restrict" = 1; # Prevent non-root from reading kernel logs
     "kernel.kptr_restrict" = 2; # Hide kernel pointers (prevents exploits)
-    "kernel.unprivileged_bpf_disabled" = 0; # Disable unprivileged BPF
+    "kernel.unprivileged_bpf_disabled" = 1; # Disable unprivileged BPF
     "kernel.unprivileged_userns_clone" = 1;
     "kernel.yama.ptrace_scope" = 1; # Restrict ptrace to prevent process inspection
 

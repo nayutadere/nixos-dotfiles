@@ -10,9 +10,8 @@
     ../../modules/core/users.nix
 
     # shared
-    ../../modules/server/agenix #temp
     ../../modules/shared/networking.nix
-    #../../modules/shared/security.nix
+    #../../modules/shared/security.nix # breaks anti-cheat (kernel hardening)
     ../../modules/shared/fonts
     ../../modules/shared/audio
     ../../modules/shared/podman
@@ -23,7 +22,8 @@
     ../../modules/desktop/graphics
     ../../modules/desktop/gaming
     ../../modules/desktop/gui
-    ../../modules/desktop/hyprland
+    #../../modules/desktop/hyprland
+    ../../modules/desktop/kdeplasma
   ];
 
   networking.hostName = "hitori";
@@ -43,8 +43,14 @@
     binfmt = true;
   };
 
-  services.flatpak.enable = true;
+  fileSystems."/mnt/games" = {
+    device = "/dev/disk/by-uuid/9f50cec9-83f1-48b2-b03b-d42a21f53cdc";
+    fsType = "ext4";  # or ntfs, exfat, btrfs, etc.
+    options = [ "defaults" "nofail" ];  # nofail = don't halt boot if drive missing
+  };
 
+  services.flatpak.enable = true;
+  programs.nix-ld.enable = true;
 
   # State version (don't change after initial install)
   system.stateVersion = "25.11";

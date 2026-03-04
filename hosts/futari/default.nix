@@ -1,4 +1,4 @@
-# furati
+# futari
 { config, lib, pkgs, ... }:
 
 {

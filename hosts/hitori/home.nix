@@ -10,7 +10,6 @@ let
     nvim = "nvim";
     waybar = "waybar";
     foot = "foot";
-    hypr = "hypr";
   };
 in
 
