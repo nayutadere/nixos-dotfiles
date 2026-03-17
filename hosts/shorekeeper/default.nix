@@ -25,21 +25,19 @@
     ../../modules/server/dashboard
     ../../modules/server/containers
     ../../modules/server/minecraft
-    ../../modules/server/factorio
+    #../../modules/server/factorio
     ../../modules/server/agenix
     ../../modules/server/searxng
     ../../modules/server/matrix
     ../../modules/server/anki
     ../../modules/server/ai
     ../../modules/server/teamspeak
+    ../../modules/server/terraria
   ];
 
   networking.hostName = "shorekeeper";
 
-  services.shorekeeper.searxng.enable = false;
-  services.shorekeeper.matrix.enable = false;
   services.shorekeeper.ai.enable = true;
-  services.shorekeeper.teamspeak.enable = false;
 
   networking.firewall.allowedTCPPorts = [
     80
@@ -51,6 +49,10 @@
   networking.firewall.allowedUDPPorts = [
     34197
   ];
+
+  networking.hosts = {
+  "192.168.1.208" = [ "bocchide.re" "jellyfin.bocchide.re" ];
+};
 
   # nix-ld for running dynamic binaries
   programs.nix-ld.enable = true;

@@ -9,14 +9,15 @@ let
   allAccess = [ nayuta_server nayuta_desktop shorekeeper hitori ];
 in
 {
-  "vpn.env.age".publicKeys = allAccess;
-  "homepage.env.age".publicKeys = allAccess;
-  "authelia-jwt.age".publicKeys = allAccess;
-  "authelia-storage.age".publicKeys = allAccess;
-  "authelia-session.age".publicKeys = allAccess;
-  "searxng-secret.age".publicKeys = allAccess;
-  "anki-password.age".publicKeys = allAccess;
-  "vpn.privateKey.age".publicKeys = allAccess;
-  "vpn.publicKey.age".publicKeys = allAccess;
-  "vpn.presharedKey.age".publicKeys = allAccess;
+  "shorekeeper/vpn.env.age".publicKeys = allAccess;
+  "shorekeeper/homepage.env.age".publicKeys = allAccess;
+  "shorekeeper/authelia-jwt.age".publicKeys = allAccess;
+  "shorekeeper/authelia-storage.age".publicKeys = allAccess;
+  "shorekeeper/authelia-session.age".publicKeys = allAccess;
+  "shorekeeper/searxng-secret.age".publicKeys = allAccess;
+  "shorekeeper/anki-password.age".publicKeys = allAccess;
+  "hitori/vpn.privateKey.age".publicKeys = allAccess;
+  "hitori/vpn.publicKey.age".publicKeys = allAccess;
+  "hitori/vpn.presharedKey.age".publicKeys = allAccess;
+  "shorekeeper/neko-env.age".publicKeys = allAccess;
 }

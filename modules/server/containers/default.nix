@@ -9,6 +9,11 @@
     defaultNetwork.settings.dns_enabled = true;
   };
 
+  networking.firewall = {
+    allowedTCPPorts = [ 8090 59000 ];
+    allowedUDPPorts = [ 59000 ];
+  };
+
   systemd.services = {
     "podman-qbittorrent" = {
       wants = [ "podman-gluetun.service" ];
@@ -50,6 +55,26 @@
       };
       extraOptions = [
         "--privileged" # required, apparently
+      ];
+    };
+
+    neko = {
+      image = "ghcr.io/m1k1o/neko/firefox:latest";
+      ports = [
+        "8090:8080"
+        "59000:59000/udp"
+        "59000:59000/tcp"
+      ];
+      environment = {
+        NEKO_SCREEN = "1920x1080@60";
+        NEKO_WEBRTC_TCPMUX = "59000";
+        NEKO_WEBRTC_UDPMUX = "59000";
+      };
+      environmentFiles = [config.age.secrets.neko-env.path];
+      extraOptions = [
+        "--shm-size=2g"
+        "--add-host=${config.serverData.domain}:192.168.1.208"
+        "--add-host=jellyfin.${config.serverData.domain}:192.168.1.208"
       ];
     };
 

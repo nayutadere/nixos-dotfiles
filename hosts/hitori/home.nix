@@ -24,7 +24,7 @@ in
       editos = "nvim ~/nixos-dotfiles/";
     };
   };
-  
+
   services.mpd = {
     enable = true;
     musicDirectory = "~/kani/Music";

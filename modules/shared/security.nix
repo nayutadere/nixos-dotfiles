@@ -4,12 +4,12 @@
 
 {
   # automatically update the system with security patches
-  system.autoUpgrade = {
-    enable = true;
-    allowReboot = false;
-    dates = "04:00";
-    flake = "github:nayutadere/nixos-dotfiles";
-  };
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   allowReboot = false;
+  #   dates = "04:00";
+  #   flake = "github:nayutadere/nixos-dotfiles";
+  # };
 
   boot.kernel.sysctl = {
     # protect against SYN flood attacks

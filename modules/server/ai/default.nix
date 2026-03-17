@@ -13,10 +13,6 @@ in
     services.ollama = {
       enable = true;
       host = "127.0.0.1";
-      loadModels = [
-        "qwen2.5-coder:7b-instruct"
-        "qwen2.5:7b-instruct"
-      ];
       environmentVariables = {
         OLLAMA_NUM_THREADS = "16";
         OLLAMA_KEEP_ALIVE = "30m";

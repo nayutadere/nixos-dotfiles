@@ -41,5 +41,8 @@
     vpn-presharedKey = {
       file = ../../../secrets/hitori/vpn.presharedKey.age;
     };
+    neko-env = {
+      file = ../../../secrets/shorekeeper/neko-env.age;
+    };
   };
 }

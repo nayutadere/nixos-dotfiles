@@ -1,21 +1,6 @@
 {config, lib, pkgs, ...}:
 
 {
-  services.openssh = {
-    enable = true;
-    openFirewall = false;
-
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
-      MaxAuthTries = 3;
-    };
-
-    extraConfig = ''
-      MaxStartups 3:50:10
-    '';
-  };
-
   services.fail2ban = {
     enable = true;
     maxretry = 3;
