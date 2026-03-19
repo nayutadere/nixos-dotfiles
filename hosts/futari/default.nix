@@ -14,6 +14,8 @@
     ../../modules/shared/security.nix
     ../../modules/shared/fonts
 
+    ../../modules/laptop/sway
+
     # ../../modules/desktop/graphics
     # ../../modules/desktop/gui
   ];
