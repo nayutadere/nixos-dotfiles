@@ -13,6 +13,7 @@
     ../../modules/shared/networking.nix
     ../../modules/shared/security.nix
     ../../modules/shared/podman
+    ../../modules/shared/syncthing
 
     # server specific security
     ../../modules/server/security
@@ -24,7 +25,7 @@
     ../../modules/server/reverse-proxy
     ../../modules/server/dashboard
     ../../modules/server/containers
-    ../../modules/server/minecraft
+    #../../modules/server/minecraft
     #../../modules/server/factorio
     ../../modules/server/agenix
     ../../modules/server/searxng
@@ -33,11 +34,13 @@
     ../../modules/server/ai
     ../../modules/server/teamspeak
     ../../modules/server/terraria
+    ../../modules/server/navidrome
   ];
 
   networking.hostName = "shorekeeper";
 
   services.shorekeeper.ai.enable = true;
+  services.shorekeeper.navidrome.enable = true;
 
   networking.firewall.allowedTCPPorts = [
     80
